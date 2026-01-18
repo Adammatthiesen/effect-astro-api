@@ -38,7 +38,7 @@ This project demonstrates using Effect's powerful functional programming primiti
 
 ### Prerequisites
 
-- Node.js 18+ or 20+
+- Node.js 20+
 - pnpm (recommended) or npm
 
 ### Installation
