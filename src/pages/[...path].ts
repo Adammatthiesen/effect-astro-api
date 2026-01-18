@@ -42,6 +42,18 @@ const { dispose, handler } = HttpApiBuilder.toWebHandler(
     Layer.mergeAll(MyApiLive, SwaggerLayer, HttpServer.layerContext)
 )
 
+// When the process is interrupted, we want to clean up resources
+process.on("exit", () => {
+    dispose().then(
+        () => {
+            process.exit(0)
+        },
+        () => {
+            process.exit(1)
+        }
+    )
+})
+
 // Astro API endpoint that allows ANY valid route into the Effect handler
 export const ALL = async ({ request, locals }: APIContext) => {
     locals.foo = "bar"; // Example of adding to locals
@@ -51,8 +63,5 @@ export const ALL = async ({ request, locals }: APIContext) => {
     } catch (error) {
         console.error("Error handling request:", error);
         throw error;
-    } finally {
-        // Dispose resources if necessary
-        dispose();
     }
 }

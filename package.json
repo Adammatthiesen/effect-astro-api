@@ -13,5 +13,8 @@
     "@effect/platform-node": "^0.104.0",
     "astro": "^5.16.11",
     "effect": "^3.19.14"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.9"
   }
 }
