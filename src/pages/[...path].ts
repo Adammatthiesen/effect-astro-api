@@ -1,4 +1,4 @@
-import type { APIContext, AstroGlobal } from "astro";
+import type { APIContext } from "astro";
 import {
     HttpApi,
     HttpApiBuilder,
@@ -16,7 +16,7 @@ import { Context, Effect, Layer, Schema } from "effect"
  * for each request, enabling us to share data between Astro and Effect handlers.
  */
 class AstroLocals extends Context.Reference<AstroLocals>()("AstroLocals", {
-    defaultValue: () => ({} as AstroGlobal['locals'])
+    defaultValue: () => ({} as APIContext['locals'])
 }) { }
 
 const api = HttpApi.make("myApi").add(
