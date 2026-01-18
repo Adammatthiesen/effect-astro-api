@@ -28,6 +28,7 @@ const { dispose, handler } = HttpApiBuilder.toWebHandler(
     Layer.mergeAll(MyApiLive, SwaggerLayer, HttpServer.layerContext)
 )
 
+// Astro API endpoint that allows ANY valid route into the Effect handler
 export const ALL = async ({ request }: APIContext) => {
     try {
         return await handler(request);
