@@ -9,6 +9,12 @@ import {
 } from "@effect/platform"
 import { Context, Effect, Layer, Schema } from "effect"
 
+/**
+ * A Context Reference to access Astro's locals within Effect handlers.
+ * 
+ * This allows us to read and modify the locals object that Astro provides
+ * for each request, enabling us to share data between Astro and Effect handlers.
+ */
 class AstroLocals extends Context.Reference<AstroLocals>()("AstroLocals", {
     defaultValue: () => ({} as AstroGlobal['locals'])
 }) { }
