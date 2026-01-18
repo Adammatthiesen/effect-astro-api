@@ -30,10 +30,7 @@ const { dispose, handler } = HttpApiBuilder.toWebHandler(
 
 export const ALL = async ({ request }: APIContext) => {
     try {
-        console.log("Handling request:", request.url);
-        const response = await handler(request);
-        console.log("Response generated");
-        return response;
+        return await handler(request);
     } catch (error) {
         console.error("Error handling request:", error);
         throw error;
