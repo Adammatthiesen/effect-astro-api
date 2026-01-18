@@ -1,43 +1,113 @@
-# Astro Starter Kit: Minimal
+# Effect Astro API
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+A demonstration project showing how to integrate [Effect](https://effect.website/) with [Astro](https://astro.build/) to build type-safe, composable APIs with automatic Swagger documentation.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Overview
 
-## 🚀 Project Structure
+This project demonstrates using Effect's powerful functional programming primitives with Astro's server-side rendering capabilities to create a robust API platform. It leverages Effect's `@effect/platform` library to build HTTP APIs with built-in type safety, error handling, and automatic OpenAPI/Swagger documentation generation.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Features
+
+- 🎯 **Type-Safe APIs**: Built with Effect Schema for runtime type validation
+- 📚 **Auto-Generated Swagger Docs**: Automatic OpenAPI documentation from your API definitions
+- ⚡ **Effect Integration**: Leverages Effect's composable, type-safe error handling
+- 🚀 **Astro SSR**: Server-side rendering with Astro's catch-all route handler
+- 🔄 **Functional Programming**: Immutable, composable API design patterns
+
+## Project Structure
 
 ```text
 /
-├── public/
+├── public/               # Static assets
 ├── src/
 │   └── pages/
-│       └── index.astro
-└── package.json
+│       └── [...path].ts  # Catch-all API route handler
+├── astro.config.mjs      # Astro configuration (SSR mode)
+├── package.json
+└── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Technology Stack
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- **[Astro](https://astro.build/)** - Web framework with SSR support
+- **[Effect](https://effect.website/)** - Functional programming library for TypeScript
+- **[@effect/platform](https://effect.website/docs/platform/introduction)** - Effect's platform abstractions
+- **[@effect/platform-node](https://effect.website/docs/platform/introduction)** - Node.js platform implementation
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Getting Started
 
-## 🧞 Commands
+### Prerequisites
 
-All commands are run from the root of the project, from a terminal:
+- Node.js 18+ or 20+
+- pnpm (recommended) or npm
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+### Installation
 
-## 👀 Want to learn more?
+```sh
+pnpm install
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Development
+
+Start the development server:
+
+```sh
+pnpm dev
+```
+
+The server will start at `http://localhost:4321`
+
+### Building for Production
+
+```sh
+pnpm build
+```
+
+### Preview Production Build
+
+```sh
+pnpm preview
+```
+
+## API Structure
+
+The project uses Effect's HttpApi system to define APIs:
+
+1. **API Definition**: Define your API structure with groups and endpoints
+2. **Schema Validation**: Use Effect Schema for request/response validation
+3. **Handlers**: Implement endpoint logic with Effect's composable handlers
+4. **Swagger**: Automatic OpenAPI documentation generation
+
+### Example Endpoint
+
+The included example demonstrates a simple GET endpoint:
+
+- **Endpoint**: `GET /`
+- **Response**: Returns "Hello, world!"
+- **Swagger**: Available at `/docs` (when configured)
+
+## How It Works
+
+The project uses Astro's `[...path].ts` catch-all route to handle all API requests. The Effect HttpApi is converted to a standard web handler using `HttpApiBuilder.toWebHandler()`, which makes it compatible with Astro's API routes.
+
+Key components:
+
+- **HttpApi**: Defines the API structure and endpoints
+- **HttpApiBuilder**: Implements the API handlers
+- **HttpApiSwagger**: Generates OpenAPI/Swagger documentation
+- **toWebHandler**: Converts Effect API to standard Web API handler
+
+## Resources
+
+- [Effect Documentation](https://effect.website/docs/introduction)
+- [Effect Platform Guide](https://effect.website/docs/platform/introduction)
+- [Astro Documentation](https://docs.astro.build)
+- [Astro API Routes](https://docs.astro.build/en/guides/endpoints/)
+
+## License
+
+MIT
+
+## Author
+
+Adam Matthiesen ([@Adammatthiesen](https://github.com/Adammatthiesen))
