@@ -43,7 +43,7 @@ const { dispose, handler } = HttpApiBuilder.toWebHandler(
 )
 
 // When the process is interrupted, we want to clean up resources
-process.on("exit", () => {
+process.on("SIGTERM", () => {
     dispose().then(
         () => {
             process.exit(0)
